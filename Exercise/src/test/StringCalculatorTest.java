@@ -24,10 +24,8 @@ public class StringCalculatorTest {
 		Assert.assertTrue(StringCalculator.add("0,0") == 0);
 	}
 
-	@Test
-	public void whenInputThreeNumberThenReturnSumOfThem() {
-		Assert.assertTrue(StringCalculator.add("1,2,3") == 6);
-		Assert.assertTrue(StringCalculator.add("1,0,3") == 4);
-		Assert.assertTrue(StringCalculator.add("0,0,0") == 0);
+	@Test(expected = RuntimeException.class)
+	public void whenInputThreeNumberThenReturnException() {
+		StringCalculator.add("1,2,3");
 	}
 }
