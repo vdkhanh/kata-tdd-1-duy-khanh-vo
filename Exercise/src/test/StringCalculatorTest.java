@@ -10,4 +10,9 @@ public class StringCalculatorTest {
     public void whenInputEmptyThenReturnZero() {
         Assert.assertTrue(StringCalculator.add("") == 0);
     }
+    
+    @Test
+    public void whenInputOneNumberThenReturnThisNumber() {
+        Assert.assertTrue(StringCalculator.add("1") == 1);
+    }
 }
