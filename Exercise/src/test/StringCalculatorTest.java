@@ -14,5 +14,11 @@ public class StringCalculatorTest {
     @Test
     public void whenInputOneNumberThenReturnThisNumber() {
         Assert.assertTrue(StringCalculator.add("1") == 1);
+        Assert.assertTrue(StringCalculator.add("2") == 2);
+    }
+    
+    @Test
+    public void whenInputTwoNumberThenReturnSumOfThem() {
+        Assert.assertTrue(StringCalculator.add("1,2") == 3);
     }
 }
