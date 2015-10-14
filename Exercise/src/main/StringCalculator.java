@@ -7,6 +7,9 @@ public class StringCalculator {
 			return 0;
 		}
 		String[] numbersArray = numbers.split(",");
+		if(numbersArray.length > 2){
+			throw new RuntimeException();
+		}
 		int sum = 0;
 		for (String number : numbersArray) {
 			sum += Integer.parseInt(number); // If it is not a number, parseInt
