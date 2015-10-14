@@ -21,5 +21,6 @@ public class StringCalculatorTest {
 	public void whenInputTwoNumberThenReturnSumOfThem() {
 		Assert.assertTrue(StringCalculator.add("1,2") == 3);
 		Assert.assertTrue(StringCalculator.add("2,2") == 4);
+		Assert.assertTrue(StringCalculator.add("0,0") == 0);
 	}
 }
