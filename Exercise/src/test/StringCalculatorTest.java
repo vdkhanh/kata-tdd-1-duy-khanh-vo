@@ -33,4 +33,8 @@ public class StringCalculatorTest {
 	public void whenInputMoreThanTwoNumberThenReturnException() {
 		StringCalculator.add("1,2,3,4,5,6");
 	}
+	@Test
+	public void whenInputTwoNumberWithNewLineThenReturnSumOfThem() {
+		Assert.assertTrue(StringCalculator.add("1\n2") == 3);
+	}
 }
