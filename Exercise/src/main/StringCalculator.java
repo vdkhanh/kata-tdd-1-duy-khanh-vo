@@ -4,7 +4,6 @@ public class StringCalculator {
 
 	private static final String NEW_LINE = "\n";
 	private static final String SPLITTER = ",";
-	private static final int MAX_NUMBER_OF_INPUT = 2;
 	private static final int ZERO = 0;
 
 	public static int add(String numbers) {
@@ -12,9 +11,6 @@ public class StringCalculator {
 			return ZERO;
 		}
 		String[] numbersArray = getNumbersArray(numbers);
-		if(numbersArray.length > MAX_NUMBER_OF_INPUT){
-			throw new RuntimeException();
-		}
 		return calculate(numbersArray);
 	}
 

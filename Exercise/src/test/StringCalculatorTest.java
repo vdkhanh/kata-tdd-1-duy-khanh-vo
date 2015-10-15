@@ -23,15 +23,10 @@ public class StringCalculatorTest {
 		Assert.assertTrue(StringCalculator.add("2,2") == 4);
 		Assert.assertTrue(StringCalculator.add("0,0") == 0);
 	}
-
-	@Test(expected = RuntimeException.class)
-	public void whenInputThreeNumberThenReturnException() {
-		StringCalculator.add("1,2,3");
-	}
 	
-	@Test(expected = RuntimeException.class)
-	public void whenInputMoreThanTwoNumberThenReturnException() {
-		StringCalculator.add("1,2,3,4,5,6");
+	@Test
+	public void whenAnyNumberOfNumbersUsedThenReturnSumOfAll() {
+		Assert.assertTrue(1+2+3+4+5+6 == StringCalculator.add("1,2,3,4,5,6"));
 	}
 	@Test
 	public void whenInputTwoNumberWithNewLineThenReturnSumOfThem() {
