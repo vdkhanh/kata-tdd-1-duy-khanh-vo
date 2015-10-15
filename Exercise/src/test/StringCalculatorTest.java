@@ -28,4 +28,9 @@ public class StringCalculatorTest {
 	public void whenInputThreeNumberThenReturnException() {
 		StringCalculator.add("1,2,3");
 	}
+	
+	@Test(expected = RuntimeException.class)
+	public void whenInputMoreThanTwoNumberThenReturnException() {
+		StringCalculator.add("1,2,3,4,5,6");
+	}
 }
