@@ -10,7 +10,7 @@ public class StringCalculator {
 		if (numbers.isEmpty()) {
 			return ZERO;
 		}
-		String[] numbersArray = numbers.split(SPLITTER);
+		String[] numbersArray = getNumbersArray(numbers);
 		if(numbersArray.length > MAX_NUMBER_OF_INPUT){
 			throw new RuntimeException();
 		}
@@ -20,6 +20,11 @@ public class StringCalculator {
 												// will throw an exception
 		}
 		return sum;
+	}
+
+	private static String[] getNumbersArray(String numbers) {
+		String[] numbersArray = numbers.replaceAll("\n", SPLITTER).split(SPLITTER);
+		return numbersArray;
 	}
 
 }
