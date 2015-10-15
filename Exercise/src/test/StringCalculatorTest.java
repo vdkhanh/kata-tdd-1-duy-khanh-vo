@@ -38,4 +38,9 @@ public class StringCalculatorTest {
 	public void whenInputMoreNumberWithNewLineAndCommaThenReturnSumOfThem() {
 		Assert.assertTrue(1 + 2 + 3 == StringCalculator.add("1\n2,3"));
 	}
+	
+	@Test
+	public final void whenDelimiterIsSpecifiedThenUseItToSplitNumbers() {
+	    Assert.assertEquals(1+2, StringCalculator.add("//;\n1;2"));
+	}
 }
