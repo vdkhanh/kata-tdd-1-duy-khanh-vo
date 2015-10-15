@@ -2,8 +2,6 @@ package main;
 
 public class StringCalculator {
 
-	private static final String NEW_LINE = "\n";
-	private static final String SPLITTER = ",";
 	private static final int ZERO = 0;
 
 	public static int add(String numbers) {
@@ -24,8 +22,14 @@ public class StringCalculator {
 	}
 
 	private static String[] getNumbersArray(String numbers) {
-		String[] numbersArray = numbers.replaceAll(NEW_LINE, SPLITTER).split(SPLITTER);
-		return numbersArray;
+		String delimiter = ",|\n";
+		String numbersWithoutDelimiter = numbers;
+		if (numbers.startsWith("//")) {
+			int delimiterIndex = "//".length();
+			delimiter = numbers.substring(delimiterIndex, delimiterIndex + 1);
+			numbersWithoutDelimiter = numbers.substring(numbers.indexOf("\n") + 1);
+		}
+		return numbersWithoutDelimiter.split(delimiter);
 	}
 
 }
