@@ -2,6 +2,7 @@ package main;
 
 public class StringCalculator {
 
+	private static final String NEW_LINE = "\n";
 	private static final String SPLITTER = ",";
 	private static final int MAX_NUMBER_OF_INPUT = 2;
 	private static final int ZERO = 0;
@@ -14,6 +15,10 @@ public class StringCalculator {
 		if(numbersArray.length > MAX_NUMBER_OF_INPUT){
 			throw new RuntimeException();
 		}
+		return calculate(numbersArray);
+	}
+
+	private static int calculate(String[] numbersArray) {
 		int sum = ZERO;
 		for (String number : numbersArray) {
 			sum += Integer.parseInt(number); // If it is not a number, parseInt
@@ -23,7 +28,7 @@ public class StringCalculator {
 	}
 
 	private static String[] getNumbersArray(String numbers) {
-		String[] numbersArray = numbers.replaceAll("\n", SPLITTER).split(SPLITTER);
+		String[] numbersArray = numbers.replaceAll(NEW_LINE, SPLITTER).split(SPLITTER);
 		return numbersArray;
 	}
 
