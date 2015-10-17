@@ -15,7 +15,7 @@ public class StringCalculator {
 		}
 		NumberCreator numberCreator = new NumberCreator();
 
-		List<Integer> numberAsList = numberCreator.create(numbers);
+		List<Integer> numberAsList = numberCreator.getNumbersAsList(numbers);
 		return calculate(numberAsList);
 	}
 
