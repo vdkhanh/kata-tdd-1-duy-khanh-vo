@@ -6,7 +6,7 @@ import java.util.List;
 public class NumberCreator {
 	private static final String SPLITTER = ",|\n";
 
-	public List<Integer> create(String numbers) {
+	public List<Integer> getNumbersAsList(String numbers) {
 		
 		if (null == numbers || numbers.isEmpty()) {
 			return new ArrayList<Integer>();
@@ -16,5 +16,10 @@ public class NumberCreator {
 			numbersAsList.add(Integer.parseInt(number));
 		}
 		return numbersAsList;
+	}
+
+	public static NumberCreator create(String numbers) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

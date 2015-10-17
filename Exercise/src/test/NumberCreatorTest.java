@@ -3,19 +3,25 @@ package test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import main.DefaultNumberCreator;
 import main.NumberCreator;
 
 public class NumberCreatorTest {
 	@Test
 	public void whenInputEmptyThenReturnEmptyList() {
 		NumberCreator numberCreator = new NumberCreator();
-		Assert.assertTrue(numberCreator.create("").isEmpty());
+		Assert.assertTrue(numberCreator.getNumbersAsList("").isEmpty());
 	}
 
 	@Test
 	public void whenInputOneNumberThenReturnListContainsThisNumber() {
 		NumberCreator numberCreator = new NumberCreator();
-		Assert.assertFalse(numberCreator.create("1").isEmpty());
-		Assert.assertTrue(1 == numberCreator.create("1").get(0));
+		Assert.assertFalse(numberCreator.getNumbersAsList("1").isEmpty());
+		Assert.assertTrue(1 == numberCreator.getNumbersAsList("1").get(0));
+	}
+	@Test
+	public void whenDelimiterIsNotSpecifiedThenReturnDefaultNumberCreator() {
+		NumberCreator numberCreator = NumberCreator.create("");
+		Assert.assertTrue(numberCreator instanceof DefaultNumberCreator);
 	}
 }
