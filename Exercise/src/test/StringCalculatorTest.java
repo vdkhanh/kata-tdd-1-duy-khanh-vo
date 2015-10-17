@@ -59,4 +59,8 @@ public class StringCalculatorTest {
 		Assert.assertTrue(1002 == StringCalculator.add("1000,2"));
 	}
 	
+	@Test
+	public void whenInputNumberWithExtendDelimiterThenReturnSumOfAll() throws NegativeNumberException{
+		Assert.assertTrue(6 == StringCalculator.add("//[***]\n1***2***3"));
+	}
 }
