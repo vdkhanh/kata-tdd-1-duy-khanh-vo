@@ -11,7 +11,7 @@ public abstract class NumberCreator {
 	private static final String ESCAPE_CHARACTER_PATTERN = "\\";
 	protected String numbers;
 
-	public abstract String getDelimiter();
+	public abstract List<String> getDelimiters();
 
 	public abstract String getNumberAfterDelimiter();
 
@@ -31,7 +31,7 @@ public abstract class NumberCreator {
 			return new ArrayList<Integer>();
 		}
 		NumberCreator numberCreator = NumberCreator.create(numbers);
-		return extractNumberByDelimiter(numberCreator.getDelimiter(), numberCreator.getNumberAfterDelimiter());
+		return extractNumberByDelimiter(numberCreator.getDelimiters().get(0), numberCreator.getNumberAfterDelimiter());
 	}
 
 	private List<Integer> extractNumberByDelimiter(String delimiter, String numberAfterDelimiter) {

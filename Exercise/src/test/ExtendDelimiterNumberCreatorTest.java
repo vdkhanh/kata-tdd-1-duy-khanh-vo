@@ -14,7 +14,7 @@ public class ExtendDelimiterNumberCreatorTest {
 	@Test
 	public void whenGetDelimiterThenReturnCorrectDelimiter() {
 		NumberCreator numberCreator = new ExtendDelimiterNumberCreator(NUMBER_WITH_EXTEND_SPECIFIED_DELIMITER);
-		Assert.assertTrue(EXTEND_DELIMITER.equals(numberCreator.getDelimiter()));
+		Assert.assertTrue(EXTEND_DELIMITER.equals(numberCreator.getDelimiters().get(0)));
 	}
 
 	@Test

@@ -14,7 +14,7 @@ public class DefaultNumberCreatorTest {
 	@Test
 	public void whenGetDelimiterThenReturnDefaultDelimiter() {
 		NumberCreator numberCreator = new DefaultNumberCreator(NUMBER_WITH_DEFAULT_DELIMITER);
-		Assert.assertTrue(DEFAULT_DELIMITER.equalsIgnoreCase(numberCreator.getDelimiter()));
+		Assert.assertTrue(DEFAULT_DELIMITER.equalsIgnoreCase(numberCreator.getDelimiters().get(0)));
 	}
 
 	@Test

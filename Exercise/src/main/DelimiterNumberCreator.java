@@ -1,5 +1,8 @@
 package main;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class DelimiterNumberCreator extends NumberCreator {
 
 	private static final String BEGIN_OF_NUMBER = "\n";
@@ -9,9 +12,9 @@ public class DelimiterNumberCreator extends NumberCreator {
 	}
 
 	@Override
-	public String getDelimiter() {
+	public List<String> getDelimiters() {
 		int delimiterIndex = USE_SPECIFIED_DELIMITER.length();
-		return numbers.substring(delimiterIndex, delimiterIndex + 1);
+		return Arrays.asList(numbers.substring(delimiterIndex, delimiterIndex + 1));
 	}
 
 	@Override

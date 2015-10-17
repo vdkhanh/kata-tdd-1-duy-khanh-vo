@@ -1,5 +1,8 @@
 package main;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class DefaultNumberCreator extends NumberCreator {
 	private static final String DEFAULT_DELIMITER = ",|\n";
 
@@ -8,8 +11,8 @@ public class DefaultNumberCreator extends NumberCreator {
 	}
 
 	@Override
-	public String getDelimiter() {
-		return DEFAULT_DELIMITER;
+	public List<String> getDelimiters() {
+		return Arrays.asList(DEFAULT_DELIMITER);
 	}
 
 	@Override

@@ -16,7 +16,7 @@ public class DelimiterNumberCreatorTest {
 	@Test
 	public void whenGetDelimiterThenReturnCorrectDelimiter() {
 		NumberCreator numberCreator = new DelimiterNumberCreator(NUMBER_WITH_SPECIFIED_DELIMITER);
-		Assert.assertTrue(SEMI_COLON.equalsIgnoreCase(numberCreator.getDelimiter()));
+		Assert.assertTrue(SEMI_COLON.equalsIgnoreCase(numberCreator.getDelimiters().get(0)));
 	}
 	@Test
 	public void whenGetNumberAfterDelimiterThenReturnCorrectNumbers() {
