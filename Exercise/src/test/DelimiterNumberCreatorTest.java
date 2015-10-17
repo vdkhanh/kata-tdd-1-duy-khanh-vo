@@ -3,7 +3,6 @@ package test;
 import org.junit.Assert;
 import org.junit.Test;
 
-import main.DefaultNumberCreator;
 import main.DelimiterNumberCreator;
 import main.NumberCreator;
 
@@ -26,18 +25,18 @@ public class DelimiterNumberCreatorTest {
 	}
 	@Test
 	public void whenInputNumberContainsNegativeNumberThenReturnTrue(){
-		NumberCreator numberCreator = new DefaultNumberCreator("//;\n-1");
+		NumberCreator numberCreator = new DelimiterNumberCreator("//;\n-1");
 		Assert.assertTrue(numberCreator.containNegativeNumber());
 	}
 	@Test
 	public void whenInputNumberNotContainsNegativeNumberThenReturnFalse(){
-		NumberCreator numberCreator = new DefaultNumberCreator("//;\n1");
+		NumberCreator numberCreator = new DelimiterNumberCreator("//;\n1");
 		Assert.assertFalse(numberCreator.containNegativeNumber());
 	}
 	
 	@Test
 	public void whenInputOneNegativeNumberThenReturnListOneNegativeNumber() {
-		NumberCreator numberCreator = new DefaultNumberCreator("//;\n-1;1;2");
+		NumberCreator numberCreator = new DelimiterNumberCreator("//;\n-1;1;2");
 		Assert.assertFalse(numberCreator.getNegativeNumbers().isEmpty());
 		Assert.assertTrue(1 == numberCreator.getNegativeNumbers().size());
 		Assert.assertTrue(-1 == numberCreator.getNegativeNumbers().get(0));
@@ -46,7 +45,7 @@ public class DelimiterNumberCreatorTest {
 
 	@Test
 	public void whenInputTwoNegativeNumberThenReturnListTwoNegativeNumber() {
-		NumberCreator numberCreator = new DefaultNumberCreator("//;\n-1;1;-2");
+		NumberCreator numberCreator = new DelimiterNumberCreator("//;\n-1;1;-2");
 		Assert.assertFalse(numberCreator.getNegativeNumbers().isEmpty());
 		Assert.assertTrue(2 == numberCreator.getNegativeNumbers().size());
 		Assert.assertTrue(-1 == numberCreator.getNegativeNumbers().get(0));
@@ -55,7 +54,7 @@ public class DelimiterNumberCreatorTest {
 
 	@Test
 	public void whenInputNoneNegativeNumberThenReturnEmptyList() {
-		NumberCreator numberCreator = new DefaultNumberCreator("");
+		NumberCreator numberCreator = new DelimiterNumberCreator("");
 		Assert.assertTrue(numberCreator.getNegativeNumbers().isEmpty());
 	}
 }
