@@ -23,8 +23,8 @@ public class ExtendDelimiterNumberCreator extends NumberCreator {
 
 	@Override
 	public String getNumberAfterDelimiter() {
-		// TODO Auto-generated method stub
-		return null;
+		int startIndex = numbers.indexOf("]\n") + "]\n".length();
+		return numbers.substring(startIndex, numbers.length());
 	}
 
 }
