@@ -1,5 +1,8 @@
 package main;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class ExtendDelimiterNumberCreator extends NumberCreator {
 
 	public ExtendDelimiterNumberCreator(String numberWithExtendSpecifiedDelimiter) {
@@ -8,8 +11,12 @@ public class ExtendDelimiterNumberCreator extends NumberCreator {
 
 	@Override
 	public String getDelimiter() {
-		// TODO Auto-generated method stub
-		return null;
+		Pattern pattern = Pattern.compile("\\[(.+?)\\]");
+		Matcher matcher = pattern.matcher(numbers);
+		if (matcher.find()) {
+			return matcher.group(1);
+		}
+		return "";
 	}
 
 	@Override
