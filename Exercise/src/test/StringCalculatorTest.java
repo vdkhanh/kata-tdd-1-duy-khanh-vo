@@ -54,4 +54,9 @@ public class StringCalculatorTest {
 		Assert.assertTrue(2 == StringCalculator.add("1001,1002,2"));
 		Assert.assertTrue(2 == StringCalculator.add("1001,1002,1003,2"));
 	}
+	@Test
+	public void whenInput1000ThenPlusThisValue() throws NegativeNumberException {
+		Assert.assertTrue(1002 == StringCalculator.add("1000,2"));
+	}
+	
 }
