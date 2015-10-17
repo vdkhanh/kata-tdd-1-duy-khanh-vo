@@ -5,6 +5,7 @@ import java.util.List;
 
 public abstract class NumberCreator {
 
+	private static final String SPECIAL_PATTERN_CHARACTERS = "*.+";
 	protected static final String USE_SPECIFIED_DELIMITER = "//";
 	private static final String USE_EXTEND_SPECIFIED_DELIMITER = "//[";
 	private static final String ESCAPE_CHARACTER_PATTERN = "\\";
@@ -66,7 +67,7 @@ public abstract class NumberCreator {
 	private String getEscapedPattern(String pattern) {
 		String escapedPattern = "";
 		for (char c : pattern.toCharArray()) {
-			if ("*.+".contains("" + c)) {
+			if (SPECIAL_PATTERN_CHARACTERS.contains(String.valueOf(c))) {
 				escapedPattern += ESCAPE_CHARACTER_PATTERN + String.valueOf(c);
 			} else {
 				escapedPattern += String.valueOf(c);
