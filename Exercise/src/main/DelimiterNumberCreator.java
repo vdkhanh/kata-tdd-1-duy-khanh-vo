@@ -2,7 +2,7 @@ package main;
 
 public class DelimiterNumberCreator extends NumberCreator {
 
-	private static final String SIGNAL_BEGIN_OF_NUMBER = "\n";
+	private static final String BEGIN_OF_NUMBER = "\n";
 
 	public DelimiterNumberCreator(String numbers) {
 		this.numbers = numbers;
@@ -10,12 +10,12 @@ public class DelimiterNumberCreator extends NumberCreator {
 
 	@Override
 	public String getDelimiter() {
-		int delimiterIndex = SIGNAL_OF_CHANGE_DELIMITER.length();
+		int delimiterIndex = USE_SPECIFIED_DELIMITER.length();
 		return numbers.substring(delimiterIndex, delimiterIndex + 1);
 	}
 
 	@Override
 	public String getNumberAfterDelimiter() {
-		return numbers.substring(numbers.indexOf(SIGNAL_BEGIN_OF_NUMBER) + 1);
+		return numbers.substring(numbers.indexOf(BEGIN_OF_NUMBER) + 1);
 	}
 }

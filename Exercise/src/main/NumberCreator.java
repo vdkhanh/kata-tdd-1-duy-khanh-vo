@@ -5,7 +5,9 @@ import java.util.List;
 
 public abstract class NumberCreator {
 
-	protected static final String SIGNAL_OF_CHANGE_DELIMITER = "//";
+	protected static final String USE_SPECIFIED_DELIMITER = "//";
+	private static final String USE_EXTEND_SPECIFIED_DELIMITER = "//[";
+	private static final String ESCAPE_CHARACTER_PATTERN = "\\";
 	protected String numbers;
 
 	public abstract String getDelimiter();
@@ -33,25 +35,43 @@ public abstract class NumberCreator {
 
 	private List<Integer> extractNumberByDelimiter(String delimiter, String numberAfterDelimiter) {
 		List<Integer> numbersAsList = new ArrayList<Integer>();
-		for (String number : numberAfterDelimiter.split(delimiter)) {
+		for (String number : numberAfterDelimiter.split(getEscapedPattern(delimiter))) {
 			numbersAsList.add(Integer.parseInt(number));
 		}
 		return numbersAsList;
 	}
 
 	public static NumberCreator create(String numbers) {
-		if (isChanngeDelimiter(numbers)) {
+		if (isUseExtendSpecifiedDelimiter(numbers)) {
+			return new ExtendDelimiterNumberCreator(numbers);
+		}
+		if (isUseSpecifiedDelimiter(numbers)) {
 			return new DelimiterNumberCreator(numbers);
 		}
 		return new DefaultNumberCreator(numbers);
 	}
 
-	private static boolean isChanngeDelimiter(String numbers) {
-		return numbers.startsWith(SIGNAL_OF_CHANGE_DELIMITER);
+	private static boolean isUseExtendSpecifiedDelimiter(String numbers) {
+		return numbers.startsWith(USE_EXTEND_SPECIFIED_DELIMITER);
+	}
+
+	private static boolean isUseSpecifiedDelimiter(String numbers) {
+		return numbers.startsWith(USE_SPECIFIED_DELIMITER);
 	}
 
 	public boolean containNegativeNumber() {
 		return !getNegativeNumbers().isEmpty();
 	}
 
+	private String getEscapedPattern(String pattern) {
+		String escapedPattern = "";
+		for (char c : pattern.toCharArray()) {
+			if ("*.+".contains("" + c)) {
+				escapedPattern += ESCAPE_CHARACTER_PATTERN + String.valueOf(c);
+			} else {
+				escapedPattern += String.valueOf(c);
+			}
+		}
+		return escapedPattern;
+	}
 }

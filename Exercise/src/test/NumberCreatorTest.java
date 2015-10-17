@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import main.DefaultNumberCreator;
 import main.DelimiterNumberCreator;
+import main.ExtendDelimiterNumberCreator;
 import main.NumberCreator;
 
 public class NumberCreatorTest {
@@ -31,5 +32,11 @@ public class NumberCreatorTest {
 	public void whenDelimiterIsSpecifiedThenReturnDelimiterNumberCreator() {
 		NumberCreator numberCreator = NumberCreator.create("//");
 		Assert.assertTrue(numberCreator instanceof DelimiterNumberCreator);
+	}
+	
+	@Test
+	public void whenExtendDelimiterIsSpecifiedThenReturnExtendDelimiterNumberCreator() {
+		NumberCreator numberCreator = NumberCreator.create("//[");
+		Assert.assertTrue(numberCreator instanceof ExtendDelimiterNumberCreator);
 	}
 }
