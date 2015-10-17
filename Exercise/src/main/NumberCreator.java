@@ -3,23 +3,39 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberCreator {
-	private static final String SPLITTER = ",|\n";
+public abstract class NumberCreator {
+
+	protected static final String SIGNAL_OF_CHANGE_DELIMITER = "//";
+	protected String numbers;
+
+	public abstract String getDelimiter();
+
+	public abstract String getNumberAfterDelimiter();
 
 	public List<Integer> getNumbersAsList(String numbers) {
-		
 		if (null == numbers || numbers.isEmpty()) {
 			return new ArrayList<Integer>();
 		}
-		List<Integer> numbersAsList = new ArrayList<Integer>(); 
-		for(String number: numbers.split(SPLITTER)){
+		NumberCreator numberCreator = NumberCreator.create(numbers);
+		return extractNumberByDelimiter(numberCreator.getDelimiter(), numberCreator.getNumberAfterDelimiter());
+	}
+
+	private List<Integer> extractNumberByDelimiter(String delimiter, String numberAfterDelimiter) {
+		List<Integer> numbersAsList = new ArrayList<Integer>();
+		for (String number : numberAfterDelimiter.split(delimiter)) {
 			numbersAsList.add(Integer.parseInt(number));
 		}
 		return numbersAsList;
 	}
 
 	public static NumberCreator create(String numbers) {
-		// TODO Auto-generated method stub
-		return null;
+		if (isChanngeDelimiter(numbers)) {
+			return new DelimiterNumberCreator(numbers);
+		}
+		return new DefaultNumberCreator(numbers);
+	}
+
+	private static boolean isChanngeDelimiter(String numbers) {
+		return numbers.startsWith(SIGNAL_OF_CHANGE_DELIMITER);
 	}
 }
