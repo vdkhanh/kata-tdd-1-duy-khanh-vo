@@ -7,8 +7,14 @@ import main.NumberCreator;
 
 public class NumberCreatorTest {
 	@Test
-	public void whenInputEmptyThenReturnEmptyList(){
+	public void whenInputEmptyThenReturnEmptyList() {
 		NumberCreator numberCreator = new NumberCreator();
 		Assert.assertTrue(numberCreator.create("").isEmpty());
+	}
+
+	@Test
+	public void whenInputOneNumberThenReturnListContainsThisNumber() {
+		NumberCreator numberCreator = new NumberCreator();
+		Assert.assertFalse(numberCreator.create("1").isEmpty());
 	}
 }
