@@ -1,5 +1,7 @@
 package main;
 
+import java.util.List;
+
 public class StringCalculator {
 
 	private static final String SIGNAL_BEGIN_OF_NUMBER = "\n";
@@ -11,15 +13,16 @@ public class StringCalculator {
 		if (numbers.isEmpty()) {
 			return ZERO;
 		}
-		String[] numbersArray = getNumbersArray(numbers);
-		return calculate(numbersArray);
+		NumberCreator numberCreator = new NumberCreator();
+
+		List<Integer> numberAsList = numberCreator.create(numbers);
+		return calculate(numberAsList);
 	}
 
-	private static int calculate(String[] numbersArray) {
+	private static int calculate(List<Integer> numberAsList) {
 		int sum = ZERO;
-		for (String number : numbersArray) {
-			sum += Integer.parseInt(number); // If it is not a number, parseInt
-												// will throw an exception
+		for (Integer number : numberAsList) {
+			sum += number;
 		}
 		return sum;
 	}

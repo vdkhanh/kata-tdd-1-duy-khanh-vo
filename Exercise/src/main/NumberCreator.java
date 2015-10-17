@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberCreator {
-	private static final String SPLITTER = ",";
+	private static final String SPLITTER = ",|\n";
 
 	public List<Integer> create(String numbers) {
 		
