@@ -8,7 +8,7 @@ import main.NumberCreator;
 
 public class ExtendDelimiterNumberCreatorTest {
 	private static final String EXTEND_DELIMITER = "***";
-	private static final String NUMBER_WITH_EXTEND_SPECIFIED_DELIMITER = "";
+	private static final String NUMBER_WITH_EXTEND_SPECIFIED_DELIMITER = "//[***]\n1***2***3";
 
 	@Test
 	public void whenGetDelimiterThenReturnCorrectDelimiter() {
