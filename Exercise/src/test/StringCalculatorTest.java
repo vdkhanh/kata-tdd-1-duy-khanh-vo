@@ -52,5 +52,6 @@ public class StringCalculatorTest {
 	@Test
 	public void whenInputMoreThanOneNumberBiggerThan1000ThenIgnoreTheirValue() throws NegativeNumberException {
 		Assert.assertTrue(2 == StringCalculator.add("1001,1002,2"));
+		Assert.assertTrue(2 == StringCalculator.add("1001,1002,1003,2"));
 	}
 }
