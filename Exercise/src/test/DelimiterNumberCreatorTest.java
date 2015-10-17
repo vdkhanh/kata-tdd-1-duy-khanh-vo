@@ -3,6 +3,7 @@ package test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import main.DefaultNumberCreator;
 import main.DelimiterNumberCreator;
 import main.NumberCreator;
 
@@ -22,5 +23,39 @@ public class DelimiterNumberCreatorTest {
 	public void whenGetNumberAfterDelimiterThenReturnCorrectNumbers() {
 		NumberCreator numberCreator = new DelimiterNumberCreator(NUMBER_WITH_SPECIFIED_DELIMITER);
 		Assert.assertTrue(NUMBER_AFTER_DELIMITER.equalsIgnoreCase(numberCreator.getNumberAfterDelimiter()));
+	}
+	@Test
+	public void whenInputNumberContainsNegativeNumberThenReturnTrue(){
+		NumberCreator numberCreator = new DefaultNumberCreator("//;\n-1");
+		Assert.assertTrue(numberCreator.containNegativeNumber());
+	}
+	@Test
+	public void whenInputNumberNotContainsNegativeNumberThenReturnFalse(){
+		NumberCreator numberCreator = new DefaultNumberCreator("//;\n1");
+		Assert.assertFalse(numberCreator.containNegativeNumber());
+	}
+	
+	@Test
+	public void whenInputOneNegativeNumberThenReturnListOneNegativeNumber() {
+		NumberCreator numberCreator = new DefaultNumberCreator("//;\n-1;1;2");
+		Assert.assertFalse(numberCreator.getNegativeNumbers().isEmpty());
+		Assert.assertTrue(1 == numberCreator.getNegativeNumbers().size());
+		Assert.assertTrue(-1 == numberCreator.getNegativeNumbers().get(0));
+
+	}
+
+	@Test
+	public void whenInputTwoNegativeNumberThenReturnListTwoNegativeNumber() {
+		NumberCreator numberCreator = new DefaultNumberCreator("//;\n-1;1;-2");
+		Assert.assertFalse(numberCreator.getNegativeNumbers().isEmpty());
+		Assert.assertTrue(2 == numberCreator.getNegativeNumbers().size());
+		Assert.assertTrue(-1 == numberCreator.getNegativeNumbers().get(0));
+		Assert.assertTrue(-2 == numberCreator.getNegativeNumbers().get(1));
+	}
+
+	@Test
+	public void whenInputNoneNegativeNumberThenReturnEmptyList() {
+		NumberCreator numberCreator = new DefaultNumberCreator("");
+		Assert.assertTrue(numberCreator.getNegativeNumbers().isEmpty());
 	}
 }

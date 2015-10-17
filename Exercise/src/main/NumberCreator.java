@@ -12,6 +12,17 @@ public abstract class NumberCreator {
 
 	public abstract String getNumberAfterDelimiter();
 
+	public List<Integer> getNegativeNumbers() {
+		List<Integer> numberAsList = getNumbersAsList(numbers);
+		List<Integer> negativeNumbers = new ArrayList<Integer>();
+		for (Integer number : numberAsList) {
+			if (number < 0) {
+				negativeNumbers.add(number);
+			}
+		}
+		return negativeNumbers;
+	}
+
 	public List<Integer> getNumbersAsList(String numbers) {
 		if (null == numbers || numbers.isEmpty()) {
 			return new ArrayList<Integer>();
@@ -38,4 +49,9 @@ public abstract class NumberCreator {
 	private static boolean isChanngeDelimiter(String numbers) {
 		return numbers.startsWith(SIGNAL_OF_CHANGE_DELIMITER);
 	}
+
+	public boolean containNegativeNumber() {
+		return !getNegativeNumbers().isEmpty();
+	}
+
 }

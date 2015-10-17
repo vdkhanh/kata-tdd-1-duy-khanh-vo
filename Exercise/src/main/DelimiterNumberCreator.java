@@ -18,5 +18,4 @@ public class DelimiterNumberCreator extends NumberCreator {
 	public String getNumberAfterDelimiter() {
 		return numbers.substring(numbers.indexOf(SIGNAL_BEGIN_OF_NUMBER) + 1);
 	}
-
 }
