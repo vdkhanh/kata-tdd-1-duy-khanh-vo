@@ -39,9 +39,14 @@ public class StringCalculatorTest {
 	public void whenInputMoreNumberWithNewLineAndCommaThenReturnSumOfThem() throws NegativeNumberException {
 		Assert.assertTrue(1 + 2 + 3 == StringCalculator.add("1\n2,3"));
 	}
-	
-	@Test (expected = NegativeNumberException.class) 
-	public void whenInputNegativeNumberThenThrowNagativeNumberExecption() throws NegativeNumberException{
+
+	@Test(expected = NegativeNumberException.class)
+	public void whenInputNegativeNumberThenThrowNagativeNumberExecption() throws NegativeNumberException {
 		StringCalculator.add("-1");
+	}
+
+	@Test
+	public void whenInputNumberBiggerThan1000ThenIgnoreThisValue() throws NegativeNumberException {
+		Assert.assertTrue(2 == StringCalculator.add("1001,2"));
 	}
 }
