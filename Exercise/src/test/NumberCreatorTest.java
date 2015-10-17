@@ -16,5 +16,6 @@ public class NumberCreatorTest {
 	public void whenInputOneNumberThenReturnListContainsThisNumber() {
 		NumberCreator numberCreator = new NumberCreator();
 		Assert.assertFalse(numberCreator.create("1").isEmpty());
+		Assert.assertTrue(1 == numberCreator.create("1").get(0));
 	}
 }
