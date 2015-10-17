@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 public class ExtendDelimiterNumberCreator extends NumberCreator {
 
+	private static final String END_OF_DELIMITER = "]\n";
 	private static final String EXTEND_DELIMITER_PATTERN = "\\[(.+?)\\]";
 
 	public ExtendDelimiterNumberCreator(String numberWithExtendSpecifiedDelimiter) {
@@ -23,7 +24,7 @@ public class ExtendDelimiterNumberCreator extends NumberCreator {
 
 	@Override
 	public String getNumberAfterDelimiter() {
-		int startIndex = numbers.indexOf("]\n") + "]\n".length();
+		int startIndex = numbers.indexOf(END_OF_DELIMITER) + END_OF_DELIMITER.length();
 		return numbers.substring(startIndex, numbers.length());
 	}
 

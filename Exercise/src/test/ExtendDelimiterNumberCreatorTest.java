@@ -7,6 +7,7 @@ import main.ExtendDelimiterNumberCreator;
 import main.NumberCreator;
 
 public class ExtendDelimiterNumberCreatorTest {
+	private static final String NUMBER_AFTER_DELIMITER = "1***2***3";
 	private static final String EXTEND_DELIMITER = "***";
 	private static final String NUMBER_WITH_EXTEND_SPECIFIED_DELIMITER = "//[***]\n1***2***3";
 
@@ -19,6 +20,7 @@ public class ExtendDelimiterNumberCreatorTest {
 	@Test
 	public void whenGetNumberAfterThenReturnCorrectNumber() {
 		NumberCreator numberCreator = new ExtendDelimiterNumberCreator(NUMBER_WITH_EXTEND_SPECIFIED_DELIMITER);
-		Assert.assertTrue("1***2***3".equals(numberCreator.getNumberAfterDelimiter()));
+		Assert.assertTrue(NUMBER_AFTER_DELIMITER.equals(numberCreator.getNumberAfterDelimiter()));
 	}
+	
 }
