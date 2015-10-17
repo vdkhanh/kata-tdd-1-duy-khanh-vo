@@ -19,7 +19,9 @@ public class StringCalculator {
 	private static int calculate(List<Integer> numberAsList) {
 		int sum = ZERO;
 		for (Integer number : numberAsList) {
-			sum += number;
+			if(number<=1000) {
+				sum += number;
+			}
 		}
 		return sum;
 	}
