@@ -13,7 +13,7 @@ public class StringCalculator {
 		if (numbers.isEmpty()) {
 			return ZERO;
 		}
-		NumberCreator numberCreator = new NumberCreator();
+		NumberCreator numberCreator = NumberCreator.create(numbers);
 
 		List<Integer> numberAsList = numberCreator.getNumbersAsList(numbers);
 		return calculate(numberAsList);

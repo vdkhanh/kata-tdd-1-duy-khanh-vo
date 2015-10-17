@@ -1,11 +1,13 @@
 package main;
 
-public class DefaultNumberCreator extends NumberCreator {
-	private static final String DEFAULT_DELIMITER = ",|\n";
+public class DelimiterNumberCreator extends NumberCreator {
+
 	@Override
 	public String getDelimiter(String numbers) {
-		return DEFAULT_DELIMITER;
+		// TODO Auto-generated method stub
+		return null;
 	}
+
 	@Override
 	public String getNumberWithOutdelimiter(String numbers) {
 		// TODO Auto-generated method stub
