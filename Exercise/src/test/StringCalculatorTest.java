@@ -62,5 +62,7 @@ public class StringCalculatorTest {
 	@Test
 	public void whenInputNumberWithExtendDelimiterThenReturnSumOfAll() throws NegativeNumberException{
 		Assert.assertTrue(6 == StringCalculator.add("//[***]\n1***2***3"));
+		Assert.assertTrue(6 == StringCalculator.add("//[--]\n1--2--3"));
+		Assert.assertTrue(6 == StringCalculator.add("//[+]\n1+2+3"));
 	}
 }
