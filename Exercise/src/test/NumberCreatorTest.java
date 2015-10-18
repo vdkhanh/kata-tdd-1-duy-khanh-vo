@@ -51,4 +51,11 @@ public class NumberCreatorTest {
 		Assert.assertTrue(2 == numbersAsList.get(1));
 		Assert.assertTrue(3 == numbersAsList.get(2));
 	}
+	
+	@Test
+	public void whenExtendDelimiterIsSpecifiedWithLongDelimiterThenReturnCorrectListOfNumber() {
+		NumberCreator numberCreator = NumberCreator.create("//[**][%%%]\n1**2%%%3");
+		List<Integer> numbersAsList = numberCreator.getNumbersAsList();
+		Assert.assertTrue(3 == numbersAsList.size());
+	}
 }
