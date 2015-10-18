@@ -27,5 +27,7 @@ public class ExtendDelimiterNumberCreatorTest {
 	public void whenGetDelimitersWithInputTwoDelimiterThenReturnCorrectListOfDelimiter() {
 		NumberCreator numberCreator = new ExtendDelimiterNumberCreator("//[*][%]\n1*2%3");
 		Assert.assertTrue(2 == numberCreator.getDelimiters().size());
+		Assert.assertTrue("*".equals(numberCreator.getDelimiters().get(0)));
+		Assert.assertTrue("%".equals(numberCreator.getDelimiters().get(1)));
 	}
 }
