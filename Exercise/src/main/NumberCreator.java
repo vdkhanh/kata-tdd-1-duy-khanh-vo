@@ -31,13 +31,24 @@ public abstract class NumberCreator {
 			return new ArrayList<Integer>();
 		}
 		NumberCreator numberCreator = NumberCreator.create(numbers);
-		return extractNumberByDelimiter(numberCreator.getDelimiters().get(0), numberCreator.getNumberAfterDelimiter());
+		return extractNumberByDelimiters(numberCreator.getDelimiters(), numberCreator.getNumberAfterDelimiter());
+	}
+
+	private List<Integer> extractNumberByDelimiters(List<String> delimiters, String numberAfterDelimiter) {
+		List<Integer> numbersAsList = new ArrayList<Integer>();
+		for(String delimiter : delimiters){
+			numbersAsList.addAll(extractNumberByDelimiter(delimiter, numberAfterDelimiter));
+		}
+		return numbersAsList ;
 	}
 
 	private List<Integer> extractNumberByDelimiter(String delimiter, String numberAfterDelimiter) {
 		List<Integer> numbersAsList = new ArrayList<Integer>();
 		for (String number : numberAfterDelimiter.split(getEscapedPattern(delimiter))) {
-			numbersAsList.add(Integer.parseInt(number));
+			try {
+				numbersAsList.add(Integer.parseInt(number));
+			} catch (Exception e) {
+			}
 		}
 		return numbersAsList;
 	}
