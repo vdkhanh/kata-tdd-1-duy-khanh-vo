@@ -59,5 +59,6 @@ public class NumberCreatorTest {
 		Assert.assertTrue(3 == numbersAsList.size());
 		Assert.assertTrue(1 == numbersAsList.get(0));
 		Assert.assertTrue(2 == numbersAsList.get(1));
+		Assert.assertTrue(3 == numbersAsList.get(2));
 	}
 }
