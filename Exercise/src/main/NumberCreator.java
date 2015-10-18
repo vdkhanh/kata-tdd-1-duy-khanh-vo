@@ -36,21 +36,23 @@ public abstract class NumberCreator {
 	}
 
 	private List<Integer> extractNumberByDelimiters(List<String> delimiters, String numberAfterDelimiter) {
+		String combinationDelimiter = getCombinationDelimiter(delimiters);
+		return extractNumberByDelimiter(combinationDelimiter, numberAfterDelimiter);
+	}
+
+	private String getCombinationDelimiter(List<String> delimiters) {
 		String combinationDelimiter = EMPTY;
 		for (String delimiter : delimiters) {
 			combinationDelimiter += JOINER_CHARACTER + delimiter;
 		}
 		combinationDelimiter = combinationDelimiter.replaceFirst("\\" + JOINER_CHARACTER, EMPTY);
-		return extractNumberByDelimiter(combinationDelimiter, numberAfterDelimiter);
+		return combinationDelimiter;
 	}
 
-	private List<Integer> extractNumberByDelimiter(String delimiter, String numberAfterDelimiter) {
+	private List<Integer> extractNumberByDelimiter(String delimiter, String numbers) {
 		List<Integer> numbersAsList = new ArrayList<Integer>();
-		for (String number : numberAfterDelimiter.split(getEscapedPattern(delimiter))) {
-			try {
-				numbersAsList.add(Integer.parseInt(number));
-			} catch (Exception e) {
-			}
+		for (String number : numbers.split(getEscapedPattern(delimiter))) {
+			numbersAsList.add(Integer.parseInt(number));
 		}
 		return numbersAsList;
 	}
@@ -80,12 +82,16 @@ public abstract class NumberCreator {
 	private String getEscapedPattern(String pattern) {
 		String escapedPattern = EMPTY;
 		for (char c : pattern.toCharArray()) {
-			if (SPECIAL_PATTERN_CHARACTERS.contains(String.valueOf(c))) {
+			if (isSpecialPatternCharacter(c)) {
 				escapedPattern += ESCAPE_CHARACTER_PATTERN + String.valueOf(c);
 			} else {
 				escapedPattern += String.valueOf(c);
 			}
 		}
 		return escapedPattern;
+	}
+
+	private boolean isSpecialPatternCharacter(char c) {
+		return SPECIAL_PATTERN_CHARACTERS.contains(String.valueOf(c));
 	}
 }
