@@ -43,6 +43,6 @@ public class NumberCreatorTest {
 	@Test
 	public void whenExtendDelimiterIsSpecifiedThenReturnCorrectListOfNumber() {
 		NumberCreator numberCreator = NumberCreator.create("//[*][%]\n1*2%3");
-		Assert.assertTrue(2 == numberCreator.getNumbersAsList("//[*][%]\n1*2%3").size());
+		Assert.assertTrue(3 == numberCreator.getNumbersAsList("//[*][%]\n1*2%3").size());
 	}
 }

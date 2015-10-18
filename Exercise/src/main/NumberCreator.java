@@ -35,11 +35,12 @@ public abstract class NumberCreator {
 	}
 
 	private List<Integer> extractNumberByDelimiters(List<String> delimiters, String numberAfterDelimiter) {
-		List<Integer> numbersAsList = new ArrayList<Integer>();
+		String combinationDelimiter = "";
 		for(String delimiter : delimiters){
-			numbersAsList.addAll(extractNumberByDelimiter(delimiter, numberAfterDelimiter));
+			combinationDelimiter += "|"+delimiter;
 		}
-		return numbersAsList ;
+		combinationDelimiter = combinationDelimiter.replaceFirst("\\|", "");
+		return extractNumberByDelimiter(combinationDelimiter, numberAfterDelimiter) ;
 	}
 
 	private List<Integer> extractNumberByDelimiter(String delimiter, String numberAfterDelimiter) {
