@@ -57,5 +57,6 @@ public class NumberCreatorTest {
 		NumberCreator numberCreator = NumberCreator.create("//[**][%%%]\n1**2%%%3");
 		List<Integer> numbersAsList = numberCreator.getNumbersAsList();
 		Assert.assertTrue(3 == numbersAsList.size());
+		Assert.assertTrue(1 == numbersAsList.get(0));
 	}
 }
