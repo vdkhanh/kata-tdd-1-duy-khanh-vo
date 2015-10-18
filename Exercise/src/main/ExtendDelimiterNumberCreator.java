@@ -1,7 +1,6 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,12 +16,13 @@ public class ExtendDelimiterNumberCreator extends NumberCreator {
 
 	@Override
 	public List<String> getDelimiters() {
+		List<String> delimiters= new ArrayList<String>();
 		Pattern pattern = Pattern.compile(EXTEND_DELIMITER_PATTERN);
 		Matcher matcher = pattern.matcher(numbers);
-		if (matcher.find()) {
-			return Arrays.asList(matcher.group(1));
+		while (matcher.find()) {
+			delimiters.add(matcher.group(1));
 		}
-		return new ArrayList<String>();
+		return delimiters;
 	}
 
 	@Override
