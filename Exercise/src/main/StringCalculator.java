@@ -15,7 +15,7 @@ public class StringCalculator {
 		if (numberCreator.containNegativeNumber()) {
 			throw new NegativeNumberException(new ArrayList<Integer>());
 		}
-		List<Integer> numberAsList = numberCreator.getNumbersAsList(numbers);
+		List<Integer> numberAsList = numberCreator.getNumbersAsList();
 		return calculate(numberAsList);
 	}
 

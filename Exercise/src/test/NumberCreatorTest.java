@@ -1,5 +1,7 @@
 package test;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,14 +14,14 @@ public class NumberCreatorTest {
 	@Test
 	public void whenInputEmptyThenReturnEmptyList() {
 		NumberCreator numberCreator = NumberCreator.create("");
-		Assert.assertTrue(numberCreator.getNumbersAsList("").isEmpty());
+		Assert.assertTrue(numberCreator.getNumbersAsList().isEmpty());
 	}
 
 	@Test
 	public void whenInputOneNumberThenReturnListContainsThisNumber() {
 		NumberCreator numberCreator = NumberCreator.create("1");
-		Assert.assertFalse(numberCreator.getNumbersAsList("1").isEmpty());
-		Assert.assertTrue(1 == numberCreator.getNumbersAsList("1").get(0));
+		Assert.assertFalse(numberCreator.getNumbersAsList().isEmpty());
+		Assert.assertTrue(1 == numberCreator.getNumbersAsList().get(0));
 	}
 
 	@Test
@@ -43,9 +45,10 @@ public class NumberCreatorTest {
 	@Test
 	public void whenExtendDelimiterIsSpecifiedThenReturnCorrectListOfNumber() {
 		NumberCreator numberCreator = NumberCreator.create("//[*][%]\n1*2%3");
-		Assert.assertTrue(3 == numberCreator.getNumbersAsList("//[*][%]\n1*2%3").size());
-		Assert.assertTrue(1 == numberCreator.getNumbersAsList("//[*][%]\n1*2%3").get(0));
-		Assert.assertTrue(2 == numberCreator.getNumbersAsList("//[*][%]\n1*2%3").get(1));
-		Assert.assertTrue(3 == numberCreator.getNumbersAsList("//[*][%]\n1*2%3").get(2));
+		List<Integer> numbersAsList = numberCreator.getNumbersAsList();
+		Assert.assertTrue(3 == numbersAsList.size());
+		Assert.assertTrue(1 == numbersAsList.get(0));
+		Assert.assertTrue(2 == numbersAsList.get(1));
+		Assert.assertTrue(3 == numbersAsList.get(2));
 	}
 }
