@@ -33,10 +33,16 @@ public class NumberCreatorTest {
 		NumberCreator numberCreator = NumberCreator.create("//");
 		Assert.assertTrue(numberCreator instanceof DelimiterNumberCreator);
 	}
-	
+
 	@Test
 	public void whenExtendDelimiterIsSpecifiedThenReturnExtendDelimiterNumberCreator() {
 		NumberCreator numberCreator = NumberCreator.create("//[");
 		Assert.assertTrue(numberCreator instanceof ExtendDelimiterNumberCreator);
+	}
+
+	@Test
+	public void whenExtendDelimiterIsSpecifiedThenReturnCorrectListOfNumber() {
+		NumberCreator numberCreator = NumberCreator.create("//[*][%]\n1*2%3");
+		Assert.assertTrue(2 == numberCreator.getNumbersAsList("//[*][%]\n1*2%3").size());
 	}
 }
