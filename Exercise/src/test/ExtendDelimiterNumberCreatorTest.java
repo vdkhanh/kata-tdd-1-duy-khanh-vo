@@ -22,5 +22,10 @@ public class ExtendDelimiterNumberCreatorTest {
 		NumberCreator numberCreator = new ExtendDelimiterNumberCreator(NUMBER_WITH_EXTEND_SPECIFIED_DELIMITER);
 		Assert.assertTrue(NUMBER_AFTER_DELIMITER.equals(numberCreator.getNumberAfterDelimiter()));
 	}
-	
+
+	@Test
+	public void whenGetDelimitersWithInputTwoDelimiterThenReturnCorrectListOfDelimiter() {
+		NumberCreator numberCreator = new ExtendDelimiterNumberCreator("//[*][%]\n1*2%3");
+		Assert.assertTrue(2 == numberCreator.getDelimiters().size());
+	}
 }
